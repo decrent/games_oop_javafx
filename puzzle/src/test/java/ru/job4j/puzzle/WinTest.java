@@ -1,8 +1,11 @@
 package ru.job4j.puzzle;
 
-import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.*;
+import org.junit.Ignore;
+import org.junit.Test;
+
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.*;
+
 
 public class WinTest {
     @Test
@@ -14,7 +17,7 @@ public class WinTest {
                 {0, 0, 1, 0, 0},
                 {0, 0, 1, 0, 0},
         };
-        assertThat(Win.check(board)).isTrue();
+        assertThat(Win.check(board), is(true));
     }
 
     @Test
@@ -26,19 +29,19 @@ public class WinTest {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},
         };
-        assertThat(Win.check(board)).isTrue();
+        assertThat(Win.check(board), is(true));
     }
 
     @Test
-    public void whenNotWin() {
+    public void whenNotWinV() {
         int[][] board = {
+                {0, 0, 1, 0, 0},
+                {0, 1, 1, 0, 0},
                 {0, 0, 0, 0, 0},
-                {0, 0, 0, 0, 0},
-                {1, 1, 1, 1, 0},
-                {0, 0, 0, 1, 0},
-                {0, 0, 0, 0, 0},
+                {0, 0, 1, 0, 0},
+                {0, 0, 1, 0, 0},
         };
-        assertThat(Win.check(board)).isFalse();
+        assertThat(Win.check(board), is(false));
     }
 
     @Test
@@ -50,6 +53,6 @@ public class WinTest {
                 {0, 0, 0, 1, 0},
                 {1, 1, 1, 1, 0},
         };
-        assertThat(Win.check(board)).isFalse();
+        assertThat(Win.check(board), is(false));
     }
 }
