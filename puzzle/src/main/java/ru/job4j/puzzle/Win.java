@@ -20,6 +20,7 @@ public class Win {
                         rsl = true;
                     } else {
                         rsl = false;
+                        break;
                     }
                 }
             }
