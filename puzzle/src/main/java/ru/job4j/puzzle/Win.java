@@ -3,18 +3,34 @@ package ru.job4j.puzzle;
 import java.util.Arrays;
 
 public class Win {
+    public static boolean vertical(int[][] board, int column) {
+        boolean result = true;
+        for (int[] ints : board) {
+            if (ints[column] != 1) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
+    public static boolean horizontal(int[][] board, int row) {
+        boolean result = true;
+        for (int i = 0; i < board.length; i++) {
+            if (board[row][i] != 1) {
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+
     public static boolean check(int[][] board) {
         boolean rsl = false;
-        for (int askew = 0; askew < board.length; askew++) {
-            if (board[askew][askew] == 1) {
-                for (int i = 0; i < board.length; i++) {
-                    if (board[askew][i] != 0 || board[i][askew] != 0) {
-                        rsl = true;
-                    } else {
-                        rsl = false;
-                        break;
-                    }
-                }
+        for (int i = 0; i < board.length; i++) {
+            if (board[i][i] == 1 && (horizontal(board, i) || vertical(board, i))) {
+                rsl = true;
+                break;
             }
         }
         return rsl;
